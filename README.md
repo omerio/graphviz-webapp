@@ -1,6 +1,15 @@
 # graphviz-webapp
 A simple Java Web application deployed as a Docker container and run as part of a [Kubernetes cluster](https://github.com/omerio/kubernetes-graphviz).
 
+## Getting Started
+
+Checkout the project
+
+```
+git clone https://github.com/omerio/graphviz-webapp 
+cd graphviz-webapp
+```
+
 To build a docker image:
 
 ```
@@ -24,7 +33,7 @@ docker login --username=blah --password=blah --email=blah@gmail.com
 docker push omerio/graphviz-webapp
 ```
 
-To deploy the image to the Google Container Registry:
+Optionally, if you are using Google Container Engine, to deploy the image to the Google Container Registry:
 
 ```
 # tag the image
