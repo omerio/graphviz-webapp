@@ -6,6 +6,7 @@ MAINTAINER Omer Dawelbeit "omer.dawelbeit@gmail.com"
 # Update aptitude with new repo
 # Install other software
 RUN apt-get -y update && apt-get install -y \
+		default-jdk \
         maven \
         git
 
