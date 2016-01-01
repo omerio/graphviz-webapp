@@ -1,5 +1,5 @@
 # graphviz-webapp
-A simply Java Web application deployed as a Docker container and run as part of a [Kubernetes cluster](https://github.com/omerio/kubernetes-graphviz).
+A simple Java Web application deployed as a Docker container and run as part of a [Kubernetes cluster](https://github.com/omerio/kubernetes-graphviz).
 
 To build a docker image:
 
