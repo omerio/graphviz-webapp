@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,20 +28,32 @@ public class GraphvizServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		
 		log.info("Generating graph for dot");
 		
+		// read environment variable on how to get the backend host IP
+		String value = System.getenv("GET_HOSTS_FROM");
+		String urlStr;
+		
+		if("dns".equals(value)) {
+			// Kubernetes should resolve the backend-service to an IP Address
+			urlStr = "http://backend-service/svg";
+			
+		} else {
+			// otherwise use this URL
+			urlStr = "http://108.59.83.98:8080/svg";
+		}
+		
+		log.info("Using url: " + urlStr);
+		
 		// the url and port number of the graphviz-server
-		URL url = new URL("http://108.59.83.98:8080/svg");
+		URL url = new URL(urlStr);
 
 		String dot = request.getParameter("dot");
 
 		response.setContentType("application/svg+xml");
 
 		if(StringUtils.isNotBlank(dot)) {
-
-			//String message = URLEncoder.encode(dot, "UTF-8");
 
 			try {
 				
