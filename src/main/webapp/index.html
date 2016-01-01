@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Graphviz Container Demo</title>
+    
+		
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+      body {
+        /*padding-top: 40px;
+        padding-bottom: 40px;*/
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 900px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      textarea {
+      	width: 860px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+    	<div class="hero-unit">
+		  <h1>Graphviz Container Demo</h1>
+		  <p>This a demo that uses a lightweight Java Graphviz server running on Google Compute Engine. More info
+			  <a href="http://omerio.com/2013/11/03/running-a-graphviz-server-on-google-compute-engine/">here</a>. The source code is in GitHub:
+		  </p>	  
+		  <ul>
+		  	<li><strong>Graphviz Server: </strong><a href="https://github.com/omerio/graphviz-server">https://github.com/omerio/graphviz-server</a></li>
+		  	<li><strong>This App: </strong><a href="https://github.com/omerio/graphviz-appengine">https://github.com/omerio/graphviz-appengine</a></li>
+		  </ul>
+		  
+		  
+		</div>
+	  	<form class="form-signin">
+		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">DOT source (<b>must start with digraph G {</b>):</label>
+		    <div class="controls">
+		      <textarea rows="10" class="js-dot-source">
+digraph G {
+  rankdir=TB
+  "START" [style="filled", fillcolor="gray", shape="circle"];
+  "START" -> "Split Execution";
+  "Split Execution" [shape="oval"];
+  "Split Execution" -> "Create Document in Repo";
+  "Split Execution" -> "Test Site Manager";
+  "Create Document in Repo" [shape="rectangle"];
+  "Create Document in Repo" -> "Merge Execution";
+  "Test Site Manager" [shape="tab"];
+  "Test Site Manager" -> "Merge Execution";
+  "Merge Execution" [shape="oval"];
+  "Merge Execution" -> "Site Manager approved?";
+  "Site Manager approved?" [shape="diamond"];
+  "Site Manager approved?" -> "Send Email" [label="true"];
+  "Site Manager approved?" -> "Requester - Application Rejection" [label="false"];
+  "Requester - Application Rejection" [shape="tab"];
+  "Requester - Application Rejection" -> "Split Execution";
+  "Send Email" [shape="rectangle"];
+  "Send Email" -> "END";
+  "END" [style="filled", fillcolor="gray", shape="doublecircle"];
+}	      
+		      </textarea>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <div class="controls">
+		      <button type="button" class="btn btn-primary js-render" data-loading-text="Loading...">Render Graph</button>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputPassword">SVG Graph:</label>
+		    <div class="controls js-svg-graph">
+		        
+		    </div>
+		  </div>
+		</form>
+	  </div>
+	  
+	  <!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel">Error</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>An error has occurred, please try again or log an issue in <a href="https://github.com/omerio/graphviz-appengine/issues">GitHub</a></p>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	  </div>
+	</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+	<script src="/js/main.js"></script>
+  </body>
+</html>
