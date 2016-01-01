@@ -1,5 +1,5 @@
-# Use the latest jetty image from hub.docker.com
-FROM jetty:latest
+# Use the jre7 jetty 9.2 image from hub.docker.com
+FROM jetty:jre7
 
 MAINTAINER Omer Dawelbeit "omer.dawelbeit@gmail.com"
 
