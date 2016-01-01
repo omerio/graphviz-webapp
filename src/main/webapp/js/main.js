@@ -6,7 +6,7 @@ $(document).ready(function() {
 	  $('.js-render').prop('disabled', true);
 	  
 	  $.ajax({
-		  url: "/getgraph",
+		  url: "getgraph",
 		  data: { 'dot' : dot },
 		  type: "POST",
 		  success: function(data) {
